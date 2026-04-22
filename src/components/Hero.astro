@@ -1,6 +1,7 @@
 ---
 import { t } from '../i18n';
 const lang: "ru" | "en" = "en";
+const base = import.meta.env.BASE_URL;
 ---
 
 <section id="hero" class="relative min-h-[100dvh] grid grid-cols-1 md:grid-cols-5 overflow-hidden">
@@ -33,7 +34,7 @@ const lang: "ru" | "en" = "en";
   <div class="md:col-span-3 relative overflow-hidden">
     <div class="absolute inset-0 z-[1]" style="background:rgba(123,45,142,0.2);mix-blend-mode:multiply" aria-hidden="true"></div>
     <img
-      src="/images/members/ugk-01.webp"
+      src={`${base}/images/members/ugk-01.webp`}
       alt="UGK — Bun B and Pimp C"
       data-i18n-alt="hero.img.alt"
       class="w-full h-full object-cover"

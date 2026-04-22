@@ -1,6 +1,7 @@
 ---
 import { t } from '../i18n';
 const lang: "ru" | "en" = "en";
+const base = import.meta.env.BASE_URL;
 
 // Fair-use disclaimer: Album covers are low-resolution images used for identification
 // of the recordings only, consistent with Wikipedia fair-use policy.
@@ -9,42 +10,42 @@ const albums = [
     title: "Too Hard to Swallow",
     year: "1992",
     label: "Jive Records",
-    cover: "/images/albums/too-hard-to-swallow.jpg",
+    cover: `${base}/images/albums/too-hard-to-swallow.jpg`,
     noteKey: "discography.albums.0.note",
   },
   {
     title: "Super Tight",
     year: "1994",
     label: "Jive Records",
-    cover: "/images/albums/super-tight.jpg",
+    cover: `${base}/images/albums/super-tight.jpg`,
     noteKey: "discography.albums.1.note",
   },
   {
     title: "Ridin' Dirty",
     year: "1996",
     label: "Jive Records",
-    cover: "/images/albums/ridin-dirty.jpg",
+    cover: `${base}/images/albums/ridin-dirty.jpg`,
     noteKey: "discography.albums.2.note",
   },
   {
     title: "Dirty Money",
     year: "2001",
     label: "Jive Records",
-    cover: "/images/albums/dirty-money.jpg",
+    cover: `${base}/images/albums/dirty-money.jpg`,
     noteKey: "discography.albums.3.note",
   },
   {
     title: "Underground Kingz",
     year: "2007",
     label: "Jive Records",
-    cover: "/images/albums/underground-kingz.jpg",
+    cover: `${base}/images/albums/underground-kingz.jpg`,
     noteKey: "discography.albums.4.note",
   },
   {
     title: "UGK 4 Life",
     year: "2009",
     label: "Jive Records",
-    cover: "/images/albums/ugk-4-life.jpg",
+    cover: `${base}/images/albums/ugk-4-life.jpg`,
     noteKey: "discography.albums.5.note",
   },
 ];

@@ -1,18 +1,19 @@
 ---
 import { t } from '../i18n';
 const lang: "ru" | "en" = "en";
+const base = import.meta.env.BASE_URL;
 
 const galleryImages = [
-  { src: "/images/members/ugk-01.webp", alt: "UGK — Bun B and Pimp C together", type: "PHOTO" },
-  { src: "/images/members/ugk-02.jpg", alt: "UGK — performing on stage", type: "PHOTO" },
-  { src: "/images/members/bun-b.jpg", alt: "Bun B — solo photo", type: "PHOTO" },
-  { src: "/images/members/pimp-c.webp", alt: "Pimp C — solo photo", type: "PHOTO" },
-  { src: "/images/albums/too-hard-to-swallow.jpg", alt: "Album cover: Too Hard to Swallow (1992)", type: "ALBUM COVER" },
-  { src: "/images/albums/super-tight.jpg", alt: "Album cover: Super Tight (1994)", type: "ALBUM COVER" },
-  { src: "/images/albums/ridin-dirty.jpg", alt: "Album cover: Ridin' Dirty (1996)", type: "ALBUM COVER" },
-  { src: "/images/albums/dirty-money.jpg", alt: "Album cover: Dirty Money (2001)", type: "ALBUM COVER" },
-  { src: "/images/albums/underground-kingz.jpg", alt: "Album cover: Underground Kingz (2007)", type: "ALBUM COVER" },
-  { src: "/images/albums/ugk-4-life.jpg", alt: "Album cover: UGK 4 Life (2009)", type: "ALBUM COVER" },
+  { src: `${base}/images/members/ugk-01.webp`, alt: "UGK — Bun B and Pimp C together", type: "PHOTO" },
+  { src: `${base}/images/members/ugk-02.jpg`, alt: "UGK — performing on stage", type: "PHOTO" },
+  { src: `${base}/images/members/bun-b.jpg`, alt: "Bun B — solo photo", type: "PHOTO" },
+  { src: `${base}/images/members/pimp-c.webp`, alt: "Pimp C — solo photo", type: "PHOTO" },
+  { src: `${base}/images/albums/too-hard-to-swallow.jpg`, alt: "Album cover: Too Hard to Swallow (1992)", type: "ALBUM COVER" },
+  { src: `${base}/images/albums/super-tight.jpg`, alt: "Album cover: Super Tight (1994)", type: "ALBUM COVER" },
+  { src: `${base}/images/albums/ridin-dirty.jpg`, alt: "Album cover: Ridin' Dirty (1996)", type: "ALBUM COVER" },
+  { src: `${base}/images/albums/dirty-money.jpg`, alt: "Album cover: Dirty Money (2001)", type: "ALBUM COVER" },
+  { src: `${base}/images/albums/underground-kingz.jpg`, alt: "Album cover: Underground Kingz (2007)", type: "ALBUM COVER" },
+  { src: `${base}/images/albums/ugk-4-life.jpg`, alt: "Album cover: UGK 4 Life (2009)", type: "ALBUM COVER" },
 ];
 ---
 
