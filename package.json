@@ -1,0 +1,22 @@
+{
+  "name": "ugk-fan-landing",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "UGK (Underground Kingz) fan landing page — brutalist style",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "astro": "^5.7.0",
+    "gsap": "^3.12.5",
+    "motion": "^12.6.0",
+    "tailwindcss": "^4.1.0"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.59.1",
+    "typescript": "^5.7.0"
+  }
+}

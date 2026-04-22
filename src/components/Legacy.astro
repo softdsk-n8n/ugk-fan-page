@@ -1,0 +1,60 @@
+---
+import { t } from '../i18n';
+const lang: "ru" | "en" = "ru";
+
+const quotes = [
+  { textKey: "legacy.quote.0", author: "Bun B" },
+  { textKey: "legacy.quote.1", author: "Drake" },
+  { textKey: "legacy.quote.2", author: "Scarface" },
+];
+---
+
+<section id="legacy" class="relative py-16 md:py-24 px-6 md:px-12 max-w-[1400px] mx-auto">
+  <div class="flex items-center gap-4 mb-12">
+    <h2 class="font-display text-[clamp(2.5rem,6vw,5rem)] text-fg tracking-tight" data-i18n="legacy.heading">
+      {t[lang]["legacy.heading"]}
+    </h2>
+    <div class="flex-1 h-[1px]" style="background:rgba(212,168,67,0.3)" aria-hidden="true"></div>
+  </div>
+  <p class="font-data text-[0.7rem] tracking-[0.1em] text-accent-gold uppercase mb-10" data-i18n="legacy.label">
+    {t[lang]["legacy.label"]}
+  </p>
+
+  <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12">
+    <div class="lg:col-span-3 space-y-6">
+      <p class="font-body text-[1.125rem] md:text-[1.25rem] leading-[1.7] max-w-[65ch]" data-i18n="legacy.p1">
+        {t[lang]["legacy.p1"]}
+      </p>
+      <p class="font-body text-[1.125rem] md:text-[1.25rem] leading-[1.7] max-w-[65ch]" data-i18n="legacy.p2">
+        {t[lang]["legacy.p2"]}
+      </p>
+      <p class="font-body text-[1.125rem] md:text-[1.25rem] leading-[1.7] max-w-[65ch]" data-i18n="legacy.p3">
+        {t[lang]["legacy.p3"]}
+      </p>
+      <div class="w-24 h-[2px] bg-accent-purple mt-8" aria-hidden="true"></div>
+    </div>
+
+    <div class="lg:col-span-2 space-y-6">
+      {quotes.map((quote) => (
+        <blockquote class="border-l-[2px] border-accent-gold pl-6">
+          <p class="font-body text-[1.125rem] leading-[1.7] text-fg italic" data-i18n={quote.textKey}>
+            «{t[lang][quote.textKey]}»
+          </p>
+          <cite class="font-data text-[0.75rem] tracking-[0.08em] text-accent-gold uppercase mt-2 block not-italic">
+            — {quote.author}
+          </cite>
+        </blockquote>
+      ))}
+    </div>
+  </div>
+
+  <div class="mt-16 overflow-hidden border-y-[1px] py-4" style="border-color:rgba(212,168,67,0.2)" aria-hidden="true">
+    <div class="marquee-track">
+      {Array(2).fill(null).map(() => (
+        <p class="font-display text-[clamp(1.5rem,4vw,3rem)] tracking-tight uppercase whitespace-nowrap px-8" style="color:rgba(212,168,67,0.2)">
+          UGK FOREVER ★ PIMP C IN MEMORY ★ BUN B STILL STANDIN' ★ PORT ARTHUR TX ★ DIRTY SOUTH PIONEERS ★ SWEET JAMES JONES ★ TRILL ★
+        </p>
+      ))}
+    </div>
+  </div>
+</section>

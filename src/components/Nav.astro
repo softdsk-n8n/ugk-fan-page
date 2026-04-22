@@ -1,0 +1,70 @@
+---
+import { t } from '../i18n';
+const lang: "ru" | "en" = "ru"; // default for SSR
+---
+
+<nav class="fixed top-0 left-0 right-0 z-40 border-b-[1px] border-accent-gold/20" style="background:rgba(13,13,13,0.9);backdrop-filter:blur(8px)" aria-label="Navigation">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-12 flex items-center justify-between h-12">
+    <a href="#hero" class="font-display text-[1.2rem] tracking-tight text-accent-gold uppercase hover:text-fg transition-colors duration-200">
+      UGK
+    </a>
+
+    <ul class="hidden md:flex items-center gap-6">
+      <li><a href="#intro" class="font-data text-[0.65rem] tracking-[0.1em] text-muted-fg uppercase hover:text-accent-gold transition-colors duration-200" data-i18n="nav.about">{t[lang]["nav.about"]}</a></li>
+      <li><a href="#members" class="font-data text-[0.65rem] tracking-[0.1em] text-muted-fg uppercase hover:text-accent-gold transition-colors duration-200" data-i18n="nav.members">{t[lang]["nav.members"]}</a></li>
+      <li><a href="#discography" class="font-data text-[0.65rem] tracking-[0.1em] text-muted-fg uppercase hover:text-accent-gold transition-colors duration-200" data-i18n="nav.discography">{t[lang]["nav.discography"]}</a></li>
+      <li><a href="#essential-tracks" class="font-data text-[0.65rem] tracking-[0.1em] text-muted-fg uppercase hover:text-accent-gold transition-colors duration-200" data-i18n="nav.tracks">{t[lang]["nav.tracks"]}</a></li>
+      <li><a href="#timeline" class="font-data text-[0.65rem] tracking-[0.1em] text-muted-fg uppercase hover:text-accent-gold transition-colors duration-200" data-i18n="nav.timeline">{t[lang]["nav.timeline"]}</a></li>
+      <li><a href="#legacy" class="font-data text-[0.65rem] tracking-[0.1em] text-muted-fg uppercase hover:text-accent-gold transition-colors duration-200" data-i18n="nav.legacy">{t[lang]["nav.legacy"]}</a></li>
+      <li><a href="#gallery" class="font-data text-[0.65rem] tracking-[0.1em] text-muted-fg uppercase hover:text-accent-gold transition-colors duration-200" data-i18n="nav.gallery">{t[lang]["nav.gallery"]}</a></li>
+    </ul>
+
+    <div class="flex items-center gap-3">
+      <button
+        id="lang-toggle"
+        class="font-data text-[0.65rem] tracking-[0.1em] text-accent-gold uppercase border-[1px] border-accent-gold/40 px-2 py-0.5 hover:bg-accent-gold hover:text-bg transition-colors duration-200"
+        data-i18n="nav.lang"
+      >
+        {t[lang]["nav.lang"]}
+      </button>
+      <button
+        id="mobile-menu-toggle"
+        class="md:hidden font-data text-[0.65rem] tracking-[0.1em] text-accent-gold uppercase"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        MENU
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="md:hidden hidden bg-bg border-t-[1px] border-accent-gold/20">
+    <ul class="px-6 py-4 space-y-3">
+      <li><a href="#intro" class="mobile-nav-link font-data text-[0.75rem] tracking-[0.08em] text-muted-fg uppercase hover:text-accent-gold transition-colors duration-200 block py-1" data-i18n="nav.about">{t[lang]["nav.about"]}</a></li>
+      <li><a href="#members" class="mobile-nav-link font-data text-[0.75rem] tracking-[0.08em] text-muted-fg uppercase hover:text-accent-gold transition-colors duration-200 block py-1" data-i18n="nav.members">{t[lang]["nav.members"]}</a></li>
+      <li><a href="#discography" class="mobile-nav-link font-data text-[0.75rem] tracking-[0.08em] text-muted-fg uppercase hover:text-accent-gold transition-colors duration-200 block py-1" data-i18n="nav.discography">{t[lang]["nav.discography"]}</a></li>
+      <li><a href="#essential-tracks" class="mobile-nav-link font-data text-[0.75rem] tracking-[0.08em] text-muted-fg uppercase hover:text-accent-gold transition-colors duration-200 block py-1" data-i18n="nav.tracks">{t[lang]["nav.tracks"]}</a></li>
+      <li><a href="#timeline" class="mobile-nav-link font-data text-[0.75rem] tracking-[0.08em] text-muted-fg uppercase hover:text-accent-gold transition-colors duration-200 block py-1" data-i18n="nav.timeline">{t[lang]["nav.timeline"]}</a></li>
+      <li><a href="#legacy" class="mobile-nav-link font-data text-[0.75rem] tracking-[0.08em] text-muted-fg uppercase hover:text-accent-gold transition-colors duration-200 block py-1" data-i18n="nav.legacy">{t[lang]["nav.legacy"]}</a></li>
+      <li><a href="#gallery" class="mobile-nav-link font-data text-[0.75rem] tracking-[0.08em] text-muted-fg uppercase hover:text-accent-gold transition-colors duration-200 block py-1" data-i18n="nav.gallery">{t[lang]["nav.gallery"]}</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    menu?.classList.toggle('hidden');
+  });
+
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle?.setAttribute('aria-expanded', 'false');
+      menu?.classList.add('hidden');
+    });
+  });
+</script>

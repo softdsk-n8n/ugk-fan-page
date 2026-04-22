@@ -1,0 +1,83 @@
+---
+import { t } from '../i18n';
+const lang: "ru" | "en" = "ru";
+
+const events = [
+  { year: "1992", textKey: "timeline.events.0", side: "left" },
+  { year: "1992", textKey: "timeline.events.1", side: "right" },
+  { year: "1994", textKey: "timeline.events.2", side: "left" },
+  { year: "1996", textKey: "timeline.events.3", side: "right" },
+  { year: "1999", textKey: "timeline.events.4", side: "left" },
+  { year: "2001", textKey: "timeline.events.5", side: "right" },
+  { year: "2005", textKey: "timeline.events.6", side: "left" },
+  { year: "2007", textKey: "timeline.events.7", side: "right" },
+  { year: "2007", textKey: "timeline.events.8", side: "left", isDeath: true },
+  { year: "2009", textKey: "timeline.events.9", side: "right" },
+];
+---
+
+<section id="timeline" class="relative py-16 md:py-24 px-6 md:px-12 max-w-[1400px] mx-auto">
+  <div class="flex items-center gap-4 mb-12">
+    <h2 class="font-display text-[clamp(2.5rem,6vw,5rem)] text-fg tracking-tight">
+      TIMELINE
+    </h2>
+    <div class="flex-1 h-[1px]" style="background:rgba(212,168,67,0.3)" aria-hidden="true"></div>
+  </div>
+  <p class="font-data text-[0.7rem] tracking-[0.1em] text-accent-gold uppercase mb-10" data-i18n="timeline.label">
+    {t[lang]["timeline.label"]}
+  </p>
+
+  <div class="relative">
+    <!-- Desktop center line -->
+    <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2" style="background:rgba(212,168,67,0.3)" aria-hidden="true"></div>
+    <!-- Mobile left line -->
+    <div class="md:hidden absolute left-4 top-0 bottom-0 w-[2px]" style="background:rgba(212,168,67,0.3)" aria-hidden="true"></div>
+
+    <div class="space-y-8 md:space-y-12">
+      {events.map((event) => (
+        <div class:list={[
+          "timeline-event relative",
+          event.side === "left" ? "timeline-event-left" : "timeline-event-right"
+        ]}>
+          {event.side === "left" ? (
+            <>
+              <div class="timeline-content pl-10 md:pl-0">
+                <time class="font-display text-[clamp(2rem,5vw,4rem)] text-accent-gold leading-[0.85] tracking-tight">
+                  {event.year}
+                </time>
+                <p class="font-body text-[1rem] leading-[1.7] text-muted-fg mt-2 max-w-[45ch]" data-i18n={event.textKey}>
+                  {t[lang][event.textKey]}
+                </p>
+              </div>
+              <div class="timeline-spacer hidden md:block"></div>
+            </>
+          ) : (
+            <>
+              <div class="timeline-spacer hidden md:block"></div>
+              <div class="timeline-content pl-10 md:pl-0">
+                <time class="font-display text-[clamp(2rem,5vw,4rem)] text-accent-gold leading-[0.85] tracking-tight">
+                  {event.year}
+                </time>
+                <p class="font-body text-[1rem] leading-[1.7] text-muted-fg mt-2 max-w-[45ch]" data-i18n={event.textKey}>
+                  {t[lang][event.textKey]}
+                </p>
+              </div>
+            </>
+          )}
+
+          <!-- Mobile dot -->
+          <div class:list={[
+            "timeline-dot-mobile md:hidden absolute left-[10px] top-[0.5rem] w-[10px] h-[10px]",
+            event.isDeath ? "bg-accent-crimson" : "bg-accent-gold"
+          ]} aria-hidden="true"></div>
+
+          <!-- Desktop dot -->
+          <div class:list={[
+            "timeline-dot hidden md:block absolute left-1/2 top-[0.5rem] -translate-x-1/2 w-[12px] h-[12px] border-[2px] border-accent-gold bg-bg",
+            event.isDeath ? "timeline-dot-crimson" : ""
+          ]} aria-hidden="true"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,107 @@
+---
+import { t } from '../i18n';
+const lang: "ru" | "en" = "ru";
+
+// Fair-use disclaimer: Album covers are low-resolution images used for identification
+// of the recordings only, consistent with Wikipedia fair-use policy.
+const albums = [
+  {
+    title: "Too Hard to Swallow",
+    year: "1992",
+    label: "Jive Records",
+    cover: "/images/albums/too-hard-to-swallow.jpg",
+    noteKey: "discography.albums.0.note",
+  },
+  {
+    title: "Super Tight",
+    year: "1994",
+    label: "Jive Records",
+    cover: "/images/albums/super-tight.jpg",
+    noteKey: "discography.albums.1.note",
+  },
+  {
+    title: "Ridin' Dirty",
+    year: "1996",
+    label: "Jive Records",
+    cover: "/images/albums/ridin-dirty.jpg",
+    noteKey: "discography.albums.2.note",
+  },
+  {
+    title: "Dirty Money",
+    year: "2001",
+    label: "Jive Records",
+    cover: "/images/albums/dirty-money.jpg",
+    noteKey: "discography.albums.3.note",
+  },
+  {
+    title: "Underground Kingz",
+    year: "2007",
+    label: "Jive Records",
+    cover: "/images/albums/underground-kingz.jpg",
+    noteKey: "discography.albums.4.note",
+  },
+  {
+    title: "UGK 4 Life",
+    year: "2009",
+    label: "Jive Records",
+    cover: "/images/albums/ugk-4-life.jpg",
+    noteKey: "discography.albums.5.note",
+  },
+];
+---
+
+<section id="discography" class="relative py-16 md:py-24">
+  <div class="px-6 md:px-12 max-w-[1400px] mx-auto mb-8">
+    <div class="flex items-center gap-4 mb-4">
+      <h2 class="font-display text-[clamp(2.5rem,6vw,5rem)] text-fg tracking-tight">
+        DISCOGRAPHY
+      </h2>
+      <div class="flex-1 h-[1px]" style="background:rgba(212,168,67,0.3)" aria-hidden="true"></div>
+    </div>
+    <p class="font-data text-[0.7rem] tracking-[0.1em] text-accent-gold uppercase" data-i18n="discography.label">
+      {t[lang]["discography.label"]}
+    </p>
+  </div>
+
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="px-6 md:px-12 max-w-[1400px] mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {albums.map((album, i) => (
+        <article
+          class="border-[1px] bg-muted p-0 album-card"
+          style="border-color:rgba(212,168,67,0.4)"
+          data-album-index={i}
+        >
+          <div class="relative overflow-hidden">
+            <img
+              src={album.cover}
+              alt={`${t[lang]["discography.cover.alt"]} ${album.title} (${album.year})`}
+              data-i18n-alt="discography.cover.alt"
+              data-i18n-alt-suffix={` ${album.title} (${album.year})`}
+              class="w-full aspect-square object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="absolute bottom-0 left-0 right-0 px-3 py-2 font-data text-[0.8rem] tracking-[0.08em] text-accent-gold uppercase" style="background:rgba(13,13,13,0.8)">
+              {album.year}
+            </span>
+          </div>
+
+          <div class="p-4">
+            <h3 class="font-display text-[1.5rem] tracking-tight text-fg leading-[0.9]">
+              {album.title.toUpperCase()}
+            </h3>
+            <p class="font-data text-[0.65rem] tracking-[0.08em] text-muted-fg uppercase mt-1">
+              {album.label}
+            </p>
+            <div class="w-full h-[1px] my-3" style="background:rgba(212,168,67,0.3)" aria-hidden="true"></div>
+            <p class="font-body text-[0.875rem] leading-[1.6] text-muted-fg" data-i18n={album.noteKey}>
+              {t[lang][album.noteKey]}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+import { t } from '../i18n';
+const lang: "ru" | "en" = "ru";
+---
+
+<section id="hero" class="relative min-h-[100dvh] grid grid-cols-1 md:grid-cols-5 overflow-hidden">
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="md:col-span-2 flex flex-col justify-center px-6 md:px-12 py-16 md:py-24 relative z-10">
+    <p class="font-data text-[0.7rem] tracking-[0.1em] text-accent-gold uppercase mb-6" data-i18n="hero.tag">
+      {t[lang]["hero.tag"]}
+    </p>
+
+    <h1
+      class="font-display text-[clamp(3.5rem,9vw,10rem)] leading-[0.85] tracking-tight text-fg glitch"
+      data-text="UNDERGROUND KINGZ"
+      data-i18n="hero.title"
+    >
+      ПОДЗЕМНЫЕ<br/>КОРОЛИ
+    </h1>
+
+    <p class="font-body text-[1.125rem] md:text-[1.25rem] leading-relaxed text-muted-fg mt-6 max-w-[55ch]" data-i18n="hero.subtitle">
+      {t[lang]["hero.subtitle"]}
+    </p>
+
+    <div class="w-full h-[1px] bg-accent-gold mt-8" aria-hidden="true"></div>
+
+    <p class="font-display-mono text-[0.85rem] tracking-[0.05em] text-accent-crimson uppercase mt-4">
+      &lt; UNDERGROUND KINGZ &gt;
+    </p>
+  </div>
+
+  <div class="md:col-span-3 relative overflow-hidden">
+    <div class="absolute inset-0 z-[1]" style="background:rgba(123,45,142,0.2);mix-blend-mode:multiply" aria-hidden="true"></div>
+    <img
+      src="/images/members/ugk-01.webp"
+      alt="UGK — Bun B and Pimp C"
+      data-i18n-alt="hero.img.alt"
+      class="w-full h-full object-cover"
+      loading="eager"
+      decoding="async"
+    />
+    <div class="hidden md:block absolute left-0 top-0 bottom-0 w-[2px] bg-accent-gold z-[2]" aria-hidden="true"></div>
+  </div>
+
+  <div class="absolute bottom-6 left-6 font-data text-[0.65rem] tracking-[0.1em] text-muted-fg uppercase" aria-hidden="true" data-i18n="hero.scroll">
+    {t[lang]["hero.scroll"]}
+  </div>
+</section>

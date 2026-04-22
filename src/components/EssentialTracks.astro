@@ -1,0 +1,68 @@
+---
+import { t } from '../i18n';
+const lang: "ru" | "en" = "ru";
+
+const tracks = [
+  { title: "International Players Anthem (I Choose You)", feat: "feat. OutKast", album: "Underground Kingz", year: "2007", youtubeId: "awMIbA34MT8" },
+  { title: "One Day", feat: "feat. Ronnie C.", album: "Ridin' Dirty", year: "1996", youtubeId: "bu7L8vzuP74" },
+  { title: "Ridin' Dirty", feat: "", album: "Ridin' Dirty", year: "1996", youtubeId: "eZmoYKEflD0" },
+  { title: "Pocket Full of Stones", feat: "", album: "Too Hard to Swallow", year: "1992", youtubeId: "MnP1XmxyqxA" },
+  { title: "Front, Back & Side to Side", feat: "", album: "Super Tight", year: "1994", youtubeId: "Be-hXxc5yN0" },
+  { title: "Choppin' Blades", feat: "", album: "Dirty Money", year: "2001", youtubeId: "mklf3eV5U0c" },
+  { title: "Da Game Been Good to Me", feat: "", album: "UGK 4 Life", year: "2009", youtubeId: "6DivB-ih4Rw" },
+  { title: "Murder", feat: "", album: "Ridin' Dirty", year: "1996", youtubeId: "aulDS37WXuQ" },
+];
+---
+
+<section id="essential-tracks" class="relative py-16 md:py-24 px-6 md:px-12 max-w-[1400px] mx-auto">
+  <div class="flex items-center gap-4 mb-12">
+    <h2 class="font-display text-[clamp(2.5rem,6vw,5rem)] text-fg tracking-tight">
+      ESSENTIAL
+    </h2>
+    <div class="flex-1 h-[1px]" style="background:rgba(212,168,67,0.3)" aria-hidden="true"></div>
+  </div>
+  <p class="font-data text-[0.7rem] tracking-[0.1em] text-accent-gold uppercase mb-10" data-i18n="tracks.label">
+    {t[lang]["tracks.label"]}
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {tracks.map((track, i) => (
+      <article class="border-[1px] bg-muted p-4 md:p-6 track-item" style="border-color:rgba(212,168,67,0.3)">
+        <div class="flex items-start justify-between gap-4 mb-4">
+          <div>
+            <h3 class="font-display text-[1.5rem] md:text-[1.8rem] tracking-tight text-fg leading-[0.9]">
+              {track.title.toUpperCase()}
+            </h3>
+            <p class="font-data text-[0.65rem] tracking-[0.08em] text-muted-fg uppercase mt-1">
+              {track.feat ? `${track.feat} / ` : ''}{track.album} ({track.year})
+            </p>
+          </div>
+          <span class="font-data text-[0.65rem] tracking-[0.1em] text-accent-gold uppercase flex-shrink-0" aria-hidden="true">
+            #{String(i + 1).padStart(2, '0')}
+          </span>
+        </div>
+
+        <div class="aspect-video bg-bg border-[1px] overflow-hidden" style="border-color:rgba(212,168,67,0.2)">
+          <iframe
+            src={`https://www.youtube.com/embed/${track.youtubeId}?rel=0&modestbranding=1`}
+            title={`UGK — ${track.title} ${track.feat}`}
+            class="w-full h-full"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <div class="mt-12 overflow-hidden" aria-hidden="true">
+    <div class="marquee-track marquee-track-reverse">
+      {Array(2).fill(null).map(() => (
+        <p class="font-display-mono text-[0.85rem] tracking-[0.05em] uppercase whitespace-nowrap px-8" style="color:rgba(212,168,67,0.4)">
+          POCKET FULL OF STONES ★ ONE DAY ★ RIDIN' DIRTY ★ INTERNATIONAL PLAYERS ANTHEM ★ FRONT BACK SIDE TO SIDE ★ CHOPPIN' BLADES ★ DA GAME BEEN GOOD TO ME ★ MURDER ★
+        </p>
+      ))}
+    </div>
+  </div>
+</section>

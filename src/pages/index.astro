@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Intro from '../components/Intro.astro';
+import Members from '../components/Members.astro';
+import Discography from '../components/Discography.astro';
+import EssentialTracks from '../components/EssentialTracks.astro';
+import Timeline from '../components/Timeline.astro';
+import Legacy from '../components/Legacy.astro';
+import Gallery from '../components/Gallery.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="UGK — Подземные Короли Южного Хип-Хопа"
+  description="Фан-страница, посвящённая UGK (Underground Kingz) — легендарному дуэту из Порт-Артура, Техас. Bun B и Pimp C определили звучание грязного юга."
+>
+  <Nav />
+
+  <main id="main" class="pt-12">
+    <Hero />
+    <Intro />
+    <Members />
+    <Discography />
+    <EssentialTracks />
+    <Timeline />
+    <Legacy />
+    <Gallery />
+  </main>
+
+  <Footer />
+
+  <!-- i18n init -->
+  <script>
+    import '../scripts/i18n-init.ts';
+  </script>
+
+  <!-- GSAP init -->
+  <script>
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion) {
+      // Fade-up stagger
+      document.querySelectorAll('section').forEach(section => {
+        const items = section.querySelectorAll('h2, h3, p, blockquote, article, .member-card, .track-item, .gallery-item');
+        if (!items.length) return;
+        gsap.fromTo(items, { opacity: 0, y: 16 }, {
+          opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', stagger: 0.08,
+          scrollTrigger: { trigger: section, start: 'top 80%', once: true }
+        });
+      });
+
+      // Hero parallax
+      const heroImg = document.querySelector('#hero img') as HTMLElement;
+      if (heroImg) {
+        gsap.to(heroImg, { y: 80, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1 } });
+      }
+
+      // Album 3D tilt
+      document.querySelectorAll('.album-card').forEach(card => {
+        const el = card as HTMLElement;
+        el.style.transformStyle = 'preserve-3d';
+        el.addEventListener('mousemove', (e: Event) => {
+          const me = e as MouseEvent;
+          const r = el.getBoundingClientRect();
+          const rx = ((me.clientY - r.top - r.height / 2) / (r.height / 2)) * -8;
+          const ry = ((me.clientX - r.left - r.width / 2) / (r.width / 2)) * 8;
+          gsap.to(el, { rotateX: rx, rotateY: ry, duration: 0.3, ease: 'power2.out' });
+        });
+        el.addEventListener('mouseleave', () => {
+          gsap.to(el, { rotateX: 0, rotateY: 0, duration: 0.4, ease: 'power2.out' });
+        });
+      });
+
+      // Member subtle tilt
+      document.querySelectorAll('.member-card').forEach(card => {
+        const el = card as HTMLElement;
+        el.addEventListener('mousemove', (e: Event) => {
+          const me = e as MouseEvent;
+          const r = el.getBoundingClientRect();
+          const rx = ((me.clientY - r.top - r.height / 2) / (r.height / 2)) * -3;
+          const ry = ((me.clientX - r.left - r.width / 2) / (r.width / 2)) * 3;
+          gsap.to(el, { rotateX: rx, rotateY: ry, duration: 0.3, ease: 'power2.out', transformPerspective: 1000 });
+        });
+        el.addEventListener('mouseleave', () => {
+          gsap.to(el, { rotateX: 0, rotateY: 0, duration: 0.5, ease: 'power2.out' });
+        });
+      });
+    }
+  </script>
+</BaseLayout>

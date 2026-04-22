@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.playwright-mcp/
+.astro/
+.DS_Store
+*.log
+%LOCALAPPDATA%/
