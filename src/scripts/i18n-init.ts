@@ -71,7 +71,7 @@ function applyLang(lang: Lang): void {
 
 function initI18n(): void {
   const saved = localStorage.getItem('ugk-lang') as Lang | null;
-  const lang: Lang = (saved === 'en' || saved === 'ru') ? saved : 'ru';
+  const lang: Lang = (saved === 'en' || saved === 'ru') ? saved : 'en';
 
   // Apply on load
   applyLang(lang);

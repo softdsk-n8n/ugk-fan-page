@@ -176,8 +176,8 @@ export const t: Record<Lang, Record<string, string>> = {
 };
 
 export function getLang(): Lang {
-  if (typeof window === "undefined") return "ru";
-  return (localStorage.getItem("ugk-lang") as Lang) || "ru";
+  if (typeof window === "undefined") return "en";
+  return (localStorage.getItem("ugk-lang") as Lang) || "en";
 }
 
 export function setLang(lang: Lang): void {
