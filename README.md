@@ -51,3 +51,4 @@ public/
 - [ ] Создать og-image.png (1200x630)
 - [ ] Проверить YouTube iframe ID на корректность
 - [ ] Обновить `site` в `astro.config.mjs` на реальный домен
+ 
